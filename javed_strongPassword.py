@@ -111,7 +111,7 @@ def verifyer(userIn):
             break # Turn off/stop the "while" loop once password requirements are satisfied        
 
 def main():
-    verifyer(userPass()) # Have this function call outside of main so the original prompt doesn't repeat    
+    verifyer(userPass())   
     
 
 

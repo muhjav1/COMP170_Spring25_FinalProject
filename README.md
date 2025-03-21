@@ -11,11 +11,11 @@ NOTE: Unlike _"prompt_decryption"_, _"decrypt_all"_ can be used in a loop, as it
 
 
 **# 2:** Retrieves unicode# for each character w/ _ord(char)_
-         # The characters are the ones resulting from _"encrypt()"_, where each character was made unicode, had a random key added to it to produce a new unicode value, then converted the new unicode back into a new unique character
+         # The characters are the ones resulting from _"encrypt()"_, where each character was made unicode, had a random key added to it to produce a new unicode, then converted the new unicode into a new unique character
 
 
 **# 3:** Substracts the Key from the unicode value of the character, providing the original unicode of the unencrypted characters                                                                                           
-         # Subtracting the Key will reverse encryption by providing the original characters unicode number, which then provides the original
+         # Subtracting the Key will reverse encryption by providing the original characters unicode number, which can then be converted into the original character
 
 
 **# 4:** Uses _% 256_ to make sure the result is between 0-255

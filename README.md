@@ -1,13 +1,13 @@
 **Pseudocode for function "decrypt_all" (also largely applies to "encrypt()":**
 
-NOTE: Unlike "prompt_decryption", _"decrypt_all"_ can be used in a loop, as it doesnt open passwords.txt at the start of each iteration. Opening passwords.txt every time results in the same line being printed over and over.
+NOTE: Unlike _"prompt_decryption"_, _"decrypt_all"_ can be used in a loop, as it doesnt open passwords.txt at the start of each iteration. Opening passwords.txt every time results in the same line being printed over and over.
 
 
 
 **Steps:**
 
 
-**# 1:** Cycles through every character in encryption_data string. _(for char in encryption_data)_
+**# 1:** Cycles through every character in the _encryption_data_ string. _(for char in encryption_data)_
 
 
 **# 2:** Retrieves unicode# for each character w/ _ord(char)_

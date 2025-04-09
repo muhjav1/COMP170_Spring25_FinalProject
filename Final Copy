@@ -23,9 +23,11 @@ Program will have two possible function sequences:
 '''
 0. Initialize Global Variables
     - N/A
+    
 1. def chooserBoi
     - allow user to indicate function sequences
-2. CREDENTIAL CREATOR:
+    
+2. PASSWORD CREATOR:
     a. def display()
         - ask user how many accounts to create
     b. def userPass():
@@ -33,7 +35,27 @@ Program will have two possible function sequences:
     c. def removeSpace():
         - remove spaces from any string passed to it
     d. def checkNumber()
-        - check if string has number
+        - check if string has at least one number
+    e. def checkLength():
+        - check length of string and ensure it is > 8
+    f. def checkUpper():
+        - check if string has atleast one uppercase character
+    g. def checkLower():
+        - check if string has atleast one lowercase character
+    h. def checkSpecial():
+        - check if string has atleast one special character (see description)
+    i. def passCheck():
+        - if inputted string satisfies all requirements, return True, else, return False
+        
+3. USERNAME CREATOR:
+    a.
+        -
+    b.
+        -
+    c.
+        -
+    d.
+        -
 
 '''
 # Program Code:
@@ -41,8 +63,8 @@ Program will have two possible function sequences:
 administratorPin = '0000'
 
 def display():
-    classSize = removeSpace(input("Welcome to your class's account creator!\n\
-Please enter the class size: "))
+    classSize = removeSpace(input("\nWelcome to your class's account creator!\nAll logins will be displayed after setup\n\
+Please enter the class size (to skip additional account creation, press 0): "))
     while not classSize.isdigit():
         classSize = removeSpace(input("Please enter a number to indicate class size: "))
     return int(classSize)
@@ -369,6 +391,8 @@ def main():
         print(credentials)
     
 main()
+
+
 
 
 

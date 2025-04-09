@@ -41,7 +41,7 @@ def display():
     classSize = removeSpace(input("Welcome to your class's account creator!\n\
 Please enter the class size: "))
     while not classSize.isdigit():
-        classSize = removeSpace(input("Please enter a number to indicate class size."))
+        classSize = removeSpace(input("Please enter a number to indicate class size: "))
     return int(classSize)
 
 def userPass(): # Get input from user and define password requirements
@@ -270,12 +270,10 @@ def prompt_decryption():
             try:
                 key = int(lines[i])
                 encryption_data = lines[i + 1]
+                decrypted_data = decrypt_all(key, encryption_data)
+                loginList.append(decrypted_data)
             except (ValueError, IndexError):
                 continue
-
-            decrypted_data = decrypt_all(key, encryption_data)
-            loginList.append(decrypted_data)
-        print(loginList)
         return loginList
 
 def dataFormatter(loginData):
@@ -283,7 +281,6 @@ def dataFormatter(loginData):
     for element in loginData:
         login = element.split(",", 1)
         logins.append(login)
-    print(logins)
     return logins
 
 def loginScreen(loginData):
@@ -360,4 +357,6 @@ def main():
         print(credentials)
     
 main()
+
+
 

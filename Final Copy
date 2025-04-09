@@ -32,10 +32,13 @@ Program will have two possible function sequences:
         - obtain a string from user
     c. def removeSpace():
         - remove spaces from any string passed to it
-    d. check 
+    d. def checkNumber()
+        - check if string has number
 
 '''
 # Program Code:
+
+administratorPin = '0000'
 
 def display():
     classSize = removeSpace(input("Welcome to your class's account creator!\n\
@@ -264,7 +267,7 @@ def decrypt_all(key, encryption_data):
 
 def prompt_decryption():
     loginList = []
-    with open("passwords.txt", "r", encoding="utf-8", errors="replace") as file:
+    with open("passwords.txt", "r", encoding="utf-8") as file:
         lines = [line.strip() for line in file if line.strip()] # Removes blank lines so that they dont interfere with the steps in the loop
         for i in range(0, len(lines), 3): # Starts at 0, ends at the last line, and uses steps of 3 to print key, username, password
             try:
@@ -322,34 +325,43 @@ def chooserBoi():
 def main():
     choice = chooserBoi()
     if choice == '1':
+        logins = prompt_decryption()
+        loginList = dataFormatter(logins)
+        adminPin = input("Please enter administrator PIN: ")
+        while adminPin != administratorPin:
+            adminPin = input("Incorrect PIN. Please re-enter: ")
         import random
         classSize = display()
-        for i in range(classSize):
-            print("Please see below to create account for Student", i + 1)
-            print()
-            lowercase_first = get_valid_first_name() # Get only the invalid fields again until all are valid.
-            lowercase_last = get_valid_last_name()
-            dob = get_valid_dob()
+        if classSize == 0:
+            print('\nCurrent Logins:', *loginList, sep = '\n')
+        else:
+            for i in range(classSize):
+                print("Please see below to create account for Student", i + 1)
+                print()
+                lowercase_first = get_valid_first_name() # Get only the invalid fields again until all are valid.
+                lowercase_last = get_valid_last_name()
+                dob = get_valid_dob()
 
-            parts = dob.split('/') # Built in function that splits a string into a number of parts based on a seperator (in this case the seperator is the "/")
-            if len(parts) == 3: # Makes sure the DOB has three parts (month, day, year)
-                year = parts[2] # Defines year as the third part of the split (0, 1, 2)
-            else:
-                year = ""
+                parts = dob.split('/') # Built in function that splits a string into a number of parts based on a seperator (in this case the seperator is the "/")
+                if len(parts) == 3: # Makes sure the DOB has three parts (month, day, year)
+                    year = parts[2] # Defines year as the third part of the split (0, 1, 2)
+                else:
+                    year = ""
             
-            username = lowercase_first + lowercase_last + year # Sets username based on first and last name and year provided
-            print()
-            print("Your assigned username is: " + username)
-            print()
-            print()
+                username = lowercase_first + lowercase_last + year # Sets username based on first and last name and year provided
+                print()
+                print("Your assigned username is: " + username)
+                print()
+                print()
 
-            password = verifyer(userPass())
-            login = username + "," + password ### Changed order it is written to file so username is first
+                password = verifyer(userPass())
+                login = username + "," + password ### Changed order it is written to file so username is first
 
-            encryption_data = encrypt(login)
+                encryption_data = encrypt(login)
 
-            with open("passwords.txt", 'a', encoding="utf-8") as file: # Ensures UTF-8 coding. Without this the encoding encounters an error
-                file.write(encryption_data + "\n") # Writes the encrypted username and password to the file. "\n" used to create a new line in the text file for each username+password pairing
+                with open("passwords.txt", 'a', encoding="utf-8") as file: # Ensures UTF-8 coding. Without this the encoding encounters an error
+                    file.write(encryption_data + "\n") # Writes the encrypted username and password to the file. "\n" used to create a new line in the text file for each username+password pairing
+            print('\nCurrent Logins:\n', *loginList, sep = '\n')
     else:
         logins = prompt_decryption() # Asks the user if they need to retrieve/decrypt a stored password. If answered yes, will print out the decrypted login information
         loginList = dataFormatter(logins)
@@ -357,6 +369,8 @@ def main():
         print(credentials)
     
 main()
+
+
 
 
 

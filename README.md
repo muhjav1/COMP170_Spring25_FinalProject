@@ -7,7 +7,10 @@ Program will have two possible function sequences:
     a. login credentials will consist of:
     
         username:
-        generated with first name, last name, and date of birth
+            - generated with:
+                first name 
+                last name 
+                date of birth
 
         password:
             - must contain an uppercase letter

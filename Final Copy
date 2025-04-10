@@ -24,7 +24,7 @@ Program will have two possible function sequences:
 0. Initialize Global Variables
     - N/A
     
-1. def chooserBoi
+1. def chooserBoi()
     - allow user to indicate function sequences
     
 2. PASSWORD CREATOR:
@@ -347,8 +347,6 @@ def chooserBoi():
 def main():
     choice = chooserBoi()
     if choice == '1':
-        logins = prompt_decryption()
-        loginList = dataFormatter(logins)
         adminPin = input("Please enter administrator PIN: ")
         while adminPin != administratorPin:
             adminPin = input("Incorrect PIN. Please re-enter: ")
@@ -383,6 +381,8 @@ def main():
 
                 with open("passwords.txt", 'a', encoding="utf-8") as file: # Ensures UTF-8 coding. Without this the encoding encounters an error
                     file.write(encryption_data + "\n") # Writes the encrypted username and password to the file. "\n" used to create a new line in the text file for each username+password pairing
+            logins = prompt_decryption()
+            loginList = dataFormatter(logins)
             print('\nCurrent Logins:\n', *loginList, sep = '\n')
     else:
         logins = prompt_decryption() # Asks the user if they need to retrieve/decrypt a stored password. If answered yes, will print out the decrypted login information
@@ -391,10 +391,4 @@ def main():
         print(credentials)
     
 main()
-
-
-
-
-
-
 

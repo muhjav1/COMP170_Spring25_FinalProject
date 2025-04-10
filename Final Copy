@@ -353,7 +353,11 @@ def main():
         import random
         classSize = display()
         if classSize == 0:
-            print('\nCurrent Logins:', *loginList, sep = '\n')
+            try:
+                print('\nCurrent Logins:', *loginList, sep = '\n')
+            except:
+                print("\nNo accounts have been created yet.\n")
+                main()
         else:
             for i in range(classSize):
                 print("Please see below to create account for Student", i + 1)
@@ -381,14 +385,22 @@ def main():
 
                 with open("passwords.txt", 'a', encoding="utf-8") as file: # Ensures UTF-8 coding. Without this the encoding encounters an error
                     file.write(encryption_data + "\n") # Writes the encrypted username and password to the file. "\n" used to create a new line in the text file for each username+password pairing
-            logins = prompt_decryption()
-            loginList = dataFormatter(logins)
-            print('\nCurrent Logins:\n', *loginList, sep = '\n')
+            try:
+                logins = prompt_decryption()
+                loginList = dataFormatter(logins)
+                print('\nCurrent Logins:\n', *loginList, sep = '\n')
+            except:
+                print("\nNo accounts have been created yet.\n")
+                main()
     else:
-        logins = prompt_decryption() # Asks the user if they need to retrieve/decrypt a stored password. If answered yes, will print out the decrypted login information
-        loginList = dataFormatter(logins)
-        credentials = loginScreen(loginList)
-        print(credentials)
+        try:
+            logins = prompt_decryption() # Asks the user if they need to retrieve/decrypt a stored password. If answered yes, will print out the decrypted login information
+            loginList = dataFormatter(logins)
+            credentials = loginScreen(loginList)
+            print(credentials)
+        except:
+            print("\nERROR:\nNo accounts created yet.\n")
+            main()
     
 main()
 

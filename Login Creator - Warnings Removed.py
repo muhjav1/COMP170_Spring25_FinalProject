@@ -70,7 +70,7 @@ Please enter the class size (to skip additional account creation, press 0): "))
     return int(classSize)
 
 def userPass(): # Get input from user and define password requirements
-    userPass = str(input('''Please enter a password as described:\n- is at least 8 characters long\n- Contains at least one uppercase letter\n- Contains at least one lowercase letter\n- Contains at least one number\n- Contains at least one special character\nSpecial Characters are as follows\n ! @ $ % ^ & * ( ) - _ = + } ] { [ \\ | : ; " ' < . > / , ?\n\n\nWARNING!: \nSpaces will not be accepted as input and will be removed.\n'''))
+    userPass = str(input('''Please enter a password as described:\n- is at least 8 characters long\n- Contains at least one uppercase letter\n- Contains at least one lowercase letter\n- Contains at least one number\n- Contains at least one special character\nSpecial Characters are as follows\n ! @ $ % ^ & * ( ) - _ = + } ] { [ \\ | : ; " ' < . > / , \\# ?\n\n\nWARNING!: \nSpaces will not be accepted as input and will be removed.\n'''))
     return userPass
 
 def removeSpace(passAttemptSpace): # Remove all spaces from user input
@@ -108,7 +108,7 @@ def checkLower(userInput): # Verify  user input has a lower-case letter in it
 
 def checkSpecial(userInput): # Verify  user input has a special character in it
     hasSpecial = False
-    special = '''!@$%^&*()_-+={[}]|\\:;"'<,>.'''
+    special = '''!@$%^&*()_-+={[}]|\\:;"'<,>.\\#'''
     for letter in userInput:
         if letter in special:
             hasSpecial = True
@@ -125,7 +125,7 @@ def passCheck(req1, req2, req3, req4, req5): # Verify password requirements and 
     elif req4 is False:
         print("\nPlease ensure password contains a lower-case letter")
     elif req5 is False:
-        print('''\nPlease ensure password contains a special character\nSpecial Characters are as follows\n ! @ $ % ^ & * ( ) - _ = + } ] { [ \\ | : ; " ' < . > / , ?\n''')
+        print('''\nPlease ensure password contains a special character\nSpecial Characters are as follows\n ! @ $ % ^ & * ( ) - _ = + } ] { [ \\ | : ; " ' < . > /\\# , ?\n''')
     else:
         goodPass = True
         print("\nPassword set successfully") # Display that user password was accepted
@@ -135,7 +135,7 @@ def displayCheck(password):
     upper = "ABCDEFGHIJKLMNOPQRSTUVWZYZ"
     lower = "abcdefghijklmnopqrstuvwxyz"
     number = "0123456789"
-    special = '''!@$%^&*()_-+={[}]|\\:;"'<,>.'''
+    special = '''!@$%^&*()_-+={[}]|\\:;"'<,>.\\#'''
     for character in password:
         if password in upper and lower and number and special:
             print("Password:",password)
@@ -202,7 +202,7 @@ def check_fname(lowercase_fname): #Checks that the first names truth value (must
 def check_lname(lowercase_lname): #Checks truth value for last name validity(must be empty of special characters and numbers). True/False will be used to determine whether to prompt the user again or use the input given
     hasDigit = False
     hasSpecial = False
-    special = '''!@$%^&*()_-+={[}]|\\:;"'<,>.\#'''
+    special = '''!@$%^&*()_-+={[}]|\\:;"'<,>.\\#'''
     for letter in lowercase_lname:
         if letter.isdigit():
             hasDigit = True
@@ -391,4 +391,3 @@ def main():
         print(credentials)
     
 main()
-

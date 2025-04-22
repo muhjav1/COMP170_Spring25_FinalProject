@@ -63,7 +63,7 @@ Program will have two possible function sequences:
 administratorPin = '0000'
 
 def display():
-    classSize = removeSpace(input("\nWelcome to your class's account creator!\nAll logins will be displayed after setup\n\))
+    classSize = removeSpace(input("\nWelcome to your class's account creator!\nAll logins will be displayed after setup\n\
 Please enter the class size (to skip additional account creation, press 0): "))
     while not classSize.isdigit():
         classSize = removeSpace(input("Please enter a number to indicate class size: "))

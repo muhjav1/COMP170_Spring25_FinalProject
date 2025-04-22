@@ -70,7 +70,7 @@ Please enter the class size (to skip additional account creation, press 0): "))
     return int(classSize)
 
 def userPass(): # Get input from user and define password requirements
-    userPass = removeSpace(str(input('''Please enter a password as described:\n- is at least 8 characters long\n- Contains at least one uppercase letter\n- Contains at least one lowercase letter\n- Contains at least one number\n- Contains at least one special character\nSpecial Characters are as follows\n ! @ $ % ^ & * ( ) - _ = + } ] { [ \\ | : ; " ' < . > / , \\# ?\n\n\nWARNING!: \nSpaces will not be accepted as input and will be removed.\n'''))
+    userPass = removeSpace(str(input('''Please enter a password as described:\n- is at least 8 characters long\n- Contains at least one uppercase letter\n- Contains at least one lowercase letter\n- Contains at least one number\n- Contains at least one special character\nSpecial Characters are as follows\n ! @ $ % ^ & * ( ) - _ = + } ] { [ \\ | : ; " ' < . > / , \\# ?\n\n\nWARNING!: \nSpaces will not be accepted as input and will be removed.\n''')))
     return userPass
 
 def removeSpace(passAttemptSpace): # Remove all spaces from user input
